@@ -1,7 +1,7 @@
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
-body{font-family:'Poppins',sans-serif;background:#FFFAF4;color:#1C0E04;overflow-x:hidden;line-height:1.6;max-width:100vw}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Poppins',sans-serif;background:#FFFAF4;color:#1C0E04;overflow-x:hidden;line-height:1.6}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 img{display:block;max-width:100%}
@@ -479,6 +479,8 @@ footer{background:#1C0E04;padding:clamp(48px,7vw,72px) clamp(20px,5vw,60px) 32px
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-indicators{bottom:16px}
   .btn-o-lg,.btn-outline{width:100%;text-align:center}
+  .histoire-img{aspect-ratio:4/5;max-height:none}
+  .gallery-strip{-webkit-overflow-scrolling:touch;touch-action:pan-x}
 }
 @media(max-width:380px){
   .btn-o-lg,.btn-outline{padding:13px 24px}

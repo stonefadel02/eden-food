@@ -52,18 +52,38 @@ document.querySelectorAll('.cnt,.cntd').forEach(el=>cio.observe(el));
 // Back to top
 btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// Galerie dots
-const strip = document.getElementById('galerie');
-const dots = document.querySelectorAll('.gallery-dots span');
-if(strip && dots.length){
-  strip.addEventListener('scroll',()=>{
-    const idx = Math.round(strip.scrollLeft / (strip.scrollWidth / dots.length));
-    dots.forEach((d,i)=>d.classList.toggle('act', i===idx));
-  },{passive:true});
-  dots.forEach((d,i)=>d.addEventListener('click',()=>{
-    strip.scrollTo({left: i * strip.scrollWidth / dots.length, behavior:'smooth'});
-  }));
-}
+// Galerie dots + auto-scroll
+(function(){
+  const strip = document.getElementById('galerie');
+  const dots  = document.querySelectorAll('.gallery-dots span');
+  if(!strip || !dots.length) return;
+
+  const count = dots.length;
+  let cur = 0, timer, isDragging = false;
+
+  function goTo(n){
+    cur = (n + count) % count;
+    strip.scrollTo({ left: cur * strip.scrollWidth / count, behavior: 'smooth' });
+    dots.forEach((d,i) => d.classList.toggle('act', i === cur));
+  }
+
+  function start(){ timer = setInterval(() => goTo(cur + 1), 3000); }
+  function stop(){  clearInterval(timer); }
+
+  // Sync dots on manual scroll
+  strip.addEventListener('scroll', () => {
+    const idx = Math.round(strip.scrollLeft / (strip.scrollWidth / count));
+    cur = idx;
+    dots.forEach((d,i) => d.classList.toggle('act', i === idx));
+  }, { passive: true });
+
+  // Pause auto-scroll on touch
+  strip.addEventListener('touchstart', () => { stop(); isDragging = true; }, { passive: true });
+  strip.addEventListener('touchend',   () => { isDragging = false; start(); }, { passive: true });
+
+  dots.forEach((d,i) => d.addEventListener('click', () => { stop(); goTo(i); start(); }));
+  start();
+})();
 
 // Hero slideshow
 (function(){
