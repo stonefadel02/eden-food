@@ -1,7 +1,7 @@
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Poppins',sans-serif;background:#FFFAF4;color:#1C0E04;overflow-x:hidden;line-height:1.6}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'Poppins',sans-serif;background:#FFFAF4;color:#1C0E04;overflow-x:hidden;line-height:1.6;max-width:100vw}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 img{display:block;max-width:100%}
@@ -127,8 +127,8 @@ nav.up{box-shadow:0 4px 24px rgba(244,120,32,.12)}
 /* Grand cercle décoratif orange en arrière-plan */
 .hero-blob{
   position:absolute;right:-120px;top:-80px;
-  width:clamp(380px,55vw,700px);
-  height:clamp(380px,55vw,700px);
+  width:clamp(260px,55vw,700px);
+  height:clamp(260px,55vw,700px);
   background:radial-gradient(circle, var(--obg2) 0%, var(--obg) 60%, transparent 100%);
   border-radius:50%;
   z-index:0;
@@ -419,9 +419,19 @@ footer{background:#1C0E04;padding:clamp(48px,7vw,72px) clamp(20px,5vw,60px) 32px
 .ft-food{font-size:9px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:-2px}
 .ft-tagline{font-size:12px;font-style:italic;color:rgba(255,255,255,.5);margin:12px 0 16px;line-height:1.6}
 .ft-body{font-size:12px;color:rgba(255,255,255,.4);line-height:1.8}
-.soc-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-.soc{font-size:10px;font-weight:500;letter-spacing:.06em;border:1px solid rgba(255,255,255,.15);padding:5px 13px;border-radius:20px;color:rgba(255,255,255,.5);transition:all .2s}
-.soc:hover{border-color:var(--o);color:var(--o)}
+.soc-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.soc-ico{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.08);
+  color:rgba(255,255,255,.6);
+  border:1px solid rgba(255,255,255,.12);
+  transition:background .2s,color .2s,transform .2s;
+  flex-shrink:0;
+}
+.soc-ico svg{width:17px;height:17px}
+.soc-ico:hover{background:var(--o);color:#fff;border-color:var(--o);transform:translateY(-2px)}
+.soc-wa:hover{background:#25D366;border-color:#25D366}
 .ft-col-t{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:18px}
 .ft-lk{display:block;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:10px;transition:color .2s,padding-left .2s}
 .ft-lk:hover{color:#fff;padding-left:4px}
