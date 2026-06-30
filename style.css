@@ -473,7 +473,7 @@ footer{background:#1C0E04;padding:clamp(48px,7vw,72px) clamp(20px,5vw,60px) 32px
   .plats-grid{grid-template-columns:1fr}
   .sauces-grid{grid-template-columns:1fr}
   .loca-grid{grid-template-columns:1fr}
-  .ft-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr 1fr;gap:20px}
   .hero{min-height:auto;padding:88px 20px 56px}
   .hero-inner{padding-bottom:52px}
   .hero-actions{flex-direction:column;align-items:stretch}
